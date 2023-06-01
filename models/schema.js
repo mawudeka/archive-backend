@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-// Connect to the database
-const dbConnection = mongoose.connect('mongodb://127.0.0.1:27017/archiveDB');
-
 // User Schema
 const userSchema = new mongoose.Schema({
 	username: {
@@ -10,16 +7,13 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		unique: true,
 	},
+	googleId: String,
 	firstName: String,
 	lastName: String,
 	email: {
 		type: String,
 		required: true,
 		unique: true,
-	},
-	password: {
-		type: String,
-		required: true,
 	},
 });
 
