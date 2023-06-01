@@ -1,6 +1,20 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+const User = require('../models/schema').user;
 
+// serialize user for cookie
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+
+//deserialize use from request cookie
+passport.deserializeUser((id, done) => {
+	User.findById(id).then((user) => {
+		done(null, user);
+	});
+});
+
+//configure passport
 passport.use(
 	new GoogleStrategy(
 		{
@@ -9,7 +23,23 @@ passport.use(
 			clientSecret: process.env.CLIENT_SECRET,
 		},
 		async (accessToken, refreshToken, profile, done) => {
-			console.log(profile);
+			const currentUser = await User.findOne({ googleId: profile.id });
+
+			if (currentUser) {
+				console.log(currentUser);
+				done(null, currentUser);
+			} else {
+				const newUser = await new User({
+					googleId: profile.id,
+					firstName: profile.name.givenName,
+					lastName: profile.name.familyName,
+				}).save();
+
+				if (newUser) {
+					console.log(newUser);
+					done(null, newUser);
+				}
+			}
 		}
 	)
 );
