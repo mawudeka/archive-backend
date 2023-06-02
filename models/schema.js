@@ -11,7 +11,11 @@ const user = mongoose.model('User', userSchema);
 
 // Event Schema
 const eventSchema = new mongoose.Schema({
-	organizer: String,
+	organizer: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'user',
+		required: true,
+	},
 	title: {
 		type: String,
 		required: true,
