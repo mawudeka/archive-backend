@@ -14,7 +14,7 @@ function authenticateUser(req, res, next) {
 
 router.get('/profile', authenticateUser, (req, res) => {
 	const currentUser = req.user;
-	res.send(currentUser);
+	res.send(currentUser + '....');
 });
 
 // only authenticated users can create new event
