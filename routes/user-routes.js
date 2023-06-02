@@ -12,17 +12,17 @@ function authenticateUser(req, res, next) {
 	}
 }
 
-router.get('/', authenticateUser, (req, res) => {
+router.get('/profile', authenticateUser, (req, res) => {
 	const currentUser = req.user;
 	res.send(currentUser);
 });
 
 // only authenticated users can create new event
-router.get('/new-event', authenticateUser, (req, res) => {
+router.get('/create', authenticateUser, (req, res) => {
 	res.send(`${req.user.firstName}, You can create new event now.`);
 });
 
-router.post('/new-event', async (req, res) => {
+router.post('/create', async (req, res) => {
 	const newEvent = await new Event({
 		organizer: req.user.id,
 		title: req.body.title,
@@ -38,7 +38,7 @@ router.post('/new-event', async (req, res) => {
 });
 
 // user viewing all their events
-router.get('/all-event', async (req, res) => {
+router.get('/events', async (req, res) => {
 	const allEventByUser = await Event.find({ organizer: req.user.id });
 	res.send(allEventByUser);
 });

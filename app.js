@@ -35,7 +35,7 @@ const Event = schema.event;
 
 //router routes
 app.use('/auth', authRoutes);
-app.use('/profile', userRoutes);
+app.use('/', userRoutes);
 
 // get events
 app.get('/', async (req, res) => {
