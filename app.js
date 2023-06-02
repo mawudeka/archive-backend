@@ -21,6 +21,7 @@ app.use(
 
 //view engine
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 //passport setups
 app.use(passport.initialize());
@@ -40,7 +41,8 @@ app.use('/', userRoutes);
 // get events
 app.get('/', async (req, res) => {
 	const events = await Event.find({});
-	res.send(events);
+	console.log(events[0].date.getFullYear());
+	res.render('index', { events: events });
 });
 
 app.get('/login', (req, res) => {

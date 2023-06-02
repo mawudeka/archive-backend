@@ -34,7 +34,7 @@ router.post('/create', async (req, res) => {
 		price: req.body.price,
 	}).save();
 
-	res.send(newEvent);
+	res.redirect('/');
 });
 
 // user viewing all their events
