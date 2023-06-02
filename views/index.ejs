@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Archive</title>
+
+		<!-- Fontawesome Icon -->
+		<script
+			src="https://kit.fontawesome.com/f1a39b0f14.js"
+			crossorigin="anonymous"
+		></script>
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+			crossorigin="anonymous"
+		/>
+		<!-- Custom Css -->
+		<link rel="stylesheet" href="/css/styles.css" />
+	</head>
+	<body>
+		<!-- Navbar Section -->
+		<section id="navbar__section">
+			<nav class="navbar navbar-expand-lg">
+				<div class="container">
+					<a class="navbar-brand me-5" href="/">
+						<img
+							src="images/logo/archivee.png"
+							alt="archive logo"
+							class="logo"
+						/>
+					</a>
+					<form class="d-flex navbar__form" role="search">
+						<div class="input-group">
+							<div class="input-group-text">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</div>
+							<input
+								class="form-control navbar__form-control"
+								type="search"
+								placeholder="search event"
+								aria-label="Search"
+								name="search"
+							/>
+						</div>
+					</form>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbar"
+						aria-controls="navbar"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="navbar-collapse collapse" id="navbar">
+						<ul class="navbar-nav ms-auto">
+							<li class="nav-item">
+								<a class="nav-link navbar__link navbar__create" href="/create">
+									Create event</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link navbar__link" href="/login"> Log In</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link navbar__link" href="/signup"> Sign Up</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</section>
+		<!-- End of navbar section -->
+
+		<!-- Hero Section -->
+		<section id="hero__section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<h1 class="hero__header">
+							Advertise Your <br />
+							Next Event On<br /><span class="hero__archive"
+								><img src="./IMAGES/LOGO/archive white.png" alt="logo"
+							/></span>
+							for free
+						</h1>
+						<div class="cta mt-5">
+							<a class="btn btn-light btn__hero" href="/create" type="button"
+								>Create Your Next Event</a
+							>
+							<a
+								class="btn btn-outline-light btn__hero"
+								href="#events__section"
+								type="button"
+								>Book Your Next Event</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- End of Hero Section -->
+
+		<!-- Tags Section -->
+
+		<section id="tag__section">
+			<div class="container">
+				<h5>Choose the category that best suite you.</h5>
+				<div class="navbar navbar-expand-lg">
+					<div class="tags">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link me-3 navbar__tags" href="/events"> All </a>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link me-3 navbar__tags"
+									href="/category/technology"
+								>
+									Technology</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link me-3 navbar__tags"
+									href="/category/blockchain"
+								>
+									Blockchain</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link me-3 navbar__tags"
+									href="/category/cryptocurrency"
+								>
+									Cryptocurrency</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link me-3 navbar__tags" href="/category/music">
+									Music</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link me-3 navbar__tags" href="/category/food">
+									Food</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Of Tags Section -->
+
+		<!-- Events Section -->
+		<section id="events__section">
+			<div class="container">
+				<div class="row">
+					<!-- card 1 -->
+					<% events.forEach((event) => { %>
+					<div class="col-lg-3 col-md-6 event__card">
+						<div class="card">
+							<img
+								class="card-img-top event__image"
+								src="/images/tech-confer-1.jpg"
+								alt="tech conference"
+							/>
+							<div class="card-body">
+								<h3 class="card-title event__title"><%= event.title %></h3>
+								<p class="card-subtitle event__description">
+									<%= `${event.description.slice(0, 49)}......` %>
+								</p>
+								<p class="card-text event__metadata">
+									<span class="location"> <%= event.location %> </span> <br />
+									<span class="date">
+										<%= event.date.toDateString() %> <br />
+									</span>
+									<span class="time"> <%= event.time %>, </span>
+									<span class="type"> <%= event.type %> </span>
+								</p>
+								<p class="card-text event__price">Ghc <%= event.price %></p>
+								<div class="d-grid">
+									<a
+										type="button"
+										href="/register"
+										class="btn btn-lg btn-dark text-nowrap"
+									>
+										Attend</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% }) %>
+				</div>
+			</div>
+		</section>
+
+		<!-- End of Events Section -->
+		<%- include('partials/footer') %>
+
