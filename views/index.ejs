@@ -174,7 +174,9 @@
 								alt="tech conference"
 							/>
 							<div class="card-body">
-								<h3 class="card-title event__title"><%= event.title %></h3>
+								<a class="card-title event__title" href="/event/<%=event.id %>">
+									<%= event.title %>
+								</a>
 								<p class="card-subtitle event__description">
 									<%= `${event.description.slice(0, 49)}......` %>
 								</p>
@@ -206,4 +208,3 @@
 
 		<!-- End of Events Section -->
 		<%- include('partials/footer') %>
-
