@@ -1,0 +1,42 @@
+.logo {
+    display: block;
+    margin: 10px auto;
+}
+
+.event-section__background {
+	background-image: url(/images/create-backgound.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 1000px;
+	filter: blur(4px);
+	-webkit-filter: blur(4px);
+}
+
+.form__section {
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 13px;
+	width: 700px;
+	margin-inline: auto;
+	padding: 50px;
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+.form__header {
+	font-size: 22px;
+	font-weight: 500;
+}
+.submit-btn {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+	.form__section {
+        width: 80%
+    }
+}

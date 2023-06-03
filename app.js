@@ -40,9 +40,19 @@ app.use('/', userRoutes);
 
 // get events
 app.get('/', async (req, res) => {
+	const today = new Date();
 	const events = await Event.find({});
-	console.log(events[0].date.getFullYear());
-	res.render('index', { events: events });
+
+	const eventsReversed = events.reverse();
+	res.render('index', { events: eventsReversed });
+});
+
+app.get('/event/:eventID', async (req, res) => {
+	const eventID = req.params.eventID;
+	const event = await Event.findById(eventID);
+
+	// create event.ejs to render this later
+	res.send(event);
 });
 
 app.get('/login', (req, res) => {
