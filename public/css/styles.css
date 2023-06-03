@@ -185,6 +185,10 @@ a {
 		margin-inline: auto;
 	}
 
+	#footer__section {
+		text-align: center;
+	}
+
 	.footer__card {
 		margin-bottom: 20px;
 	}

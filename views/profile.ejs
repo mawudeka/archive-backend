@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<div class="profile__section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="profile__avatar">
+					<img
+						src="https://images.unsplash.com/photo-15559954-e7e7e7e7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+						class="img-fluid"
+						alt=""
+					/>
+				</div>
+                <div class="profile__about">
+                    <div class="profile__about-text">
+                        <h3 class="profile__about-header">
+                            <span class="firstname"><%= user.firstName %></span>
+                            <span class="lastname"><%= user.lastName %></span>
+                        </h3>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('partials/events') %> <%- include('partials/footer') %>

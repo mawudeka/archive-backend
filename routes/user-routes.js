@@ -11,9 +11,26 @@ function authenticateUser(req, res, next) {
 	}
 }
 
-router.get('/profile', authenticateUser, (req, res) => {
+router.get('/profile', authenticateUser, async (req, res) => {
 	const currentUser = req.user;
-	res.send(currentUser + '....');
+	const events = await Event.find({ organizer: currentUser.id });
+	if (events.length > 0) {
+		const message = 'Your Events ';
+		res.render('profile', {
+			message: message,
+			title: 'Profile',
+			events: events,
+			user: currentUser,
+		});
+	} else {
+		const message = '';
+		res.render('profile', {
+			message: message,
+			title: 'Profile',
+			events: events,
+			user: currentUser,
+		});
+	}
 });
 
 // only authenticated users can create new event
@@ -36,12 +53,6 @@ router.post('/create', async (req, res) => {
 	}).save();
 
 	res.redirect('/');
-});
-
-// user viewing all their events
-router.get('/events', async (req, res) => {
-	const allEventByUser = await Event.find({ organizer: req.user.id });
-	res.send(allEventByUser);
 });
 
 module.exports = router;
