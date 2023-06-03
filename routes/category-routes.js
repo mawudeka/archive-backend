@@ -9,7 +9,15 @@ router.get('/:categoryName', async (req, res) => {
 		tags: { $in: categoryName },
 	});
 
-	res.send(events);
+	if (events.length === 0) {
+		const message = `Oops! No Event in this 
+        ${categoryName} yet. Hopefully you or someone
+        else will host it soon. Please check another category`;
+		res.render('index', { events: events, message: message });
+	} else {
+		const message = '';
+		res.render('index', { events: events, message: message });
+	}
 });
 
 module.exports = router;
