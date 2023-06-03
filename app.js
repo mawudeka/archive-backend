@@ -61,7 +61,11 @@ app.get('/event/:eventID', async (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-	res.send('login page');
+	res.render('login');
+});
+
+app.get('/signup', (req, res) => {
+	res.redirect('/login');
 });
 
 app.listen(process.env.PORT || 3000, () => {
