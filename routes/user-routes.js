@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { application } = require('express');
 const schema = require('../models/schema');
 
 const Event = schema.event;
@@ -23,6 +22,7 @@ router.get('/create', authenticateUser, (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
+	const tags = req.body.tags.split(', ');
 	const newEvent = await new Event({
 		organizer: req.user.id,
 		title: req.body.title,
@@ -32,9 +32,10 @@ router.post('/create', async (req, res) => {
 		time: req.body.time,
 		type: req.body.type,
 		price: req.body.price,
+		tags: tags,
 	}).save();
 
-	res.redirect('/')
+	res.redirect('/');
 });
 
 // user viewing all their events
