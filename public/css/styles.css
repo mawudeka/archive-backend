@@ -102,6 +102,10 @@ a {
 .event__card {
 	margin-bottom: 32px;
 }
+
+.card {
+	height: 500px;
+}
 .event__card:hover {
 	transform: scale(1.05);
 }

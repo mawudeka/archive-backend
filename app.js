@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const authRoutes = require('./routes/auth-routes');
 const userRoutes = require('./routes/user-routes');
+const categoryRoutes = require('./routes/category-routes');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
@@ -37,14 +38,18 @@ const Event = schema.event;
 //router routes
 app.use('/auth', authRoutes);
 app.use('/', userRoutes);
+app.use('/category', categoryRoutes);
 
 // get events
 app.get('/', async (req, res) => {
-	const today = new Date();
 	const events = await Event.find({});
+	events.sort((a, b) => {
+		return new Date(b.date) - new Date(a.date);
+	});
 
-	const eventsReversed = events.reverse();
-	res.render('index', { events: eventsReversed });
+	const message = '';
+
+	res.render('index', { events: events, message: message });
 });
 
 app.get('/event/:eventID', async (req, res) => {
@@ -56,7 +61,11 @@ app.get('/event/:eventID', async (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-	res.send('login page');
+	res.render('login');
+});
+
+app.get('/signup', (req, res) => {
+	res.redirect('/login');
 });
 
 app.listen(process.env.PORT || 3000, () => {
