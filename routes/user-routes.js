@@ -19,7 +19,7 @@ router.get('/profile', authenticateUser, (req, res) => {
 
 // only authenticated users can create new event
 router.get('/create', authenticateUser, (req, res) => {
-	res.send(`${req.user.firstName}, You can create new event now.`);
+	res.render('create', { user: req.user.firstName });
 });
 
 router.post('/create', async (req, res) => {
@@ -34,7 +34,7 @@ router.post('/create', async (req, res) => {
 		price: req.body.price,
 	}).save();
 
-	res.redirect('/');
+	res.redirect('/')
 });
 
 // user viewing all their events
