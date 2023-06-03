@@ -1,16 +1,18 @@
 require('dotenv').config();
 const express = require('express');
-const authRoutes = require('./routes/auth-routes');
-const userRoutes = require('./routes/user-routes');
-const categoryRoutes = require('./routes/category-routes');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 const session = require('express-session');
-const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth-routes');
+const categoryRoutes = require('./routes/category-routes');
+const userRoutes = require('./routes/user-routes');
 const schema = require('./models/schema');
 
 const app = express();
+
+//Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
 	session({
@@ -29,10 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connect mongoose
+
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING);
 
 //DB models
-const User = schema.user;
 const Event = schema.event;
 
 //router routes
@@ -43,6 +45,7 @@ app.use('/category', categoryRoutes);
 // get events
 app.get('/', async (req, res) => {
 	const events = await Event.find({});
+
 	events.sort((a, b) => {
 		return new Date(b.date) - new Date(a.date);
 	});
