@@ -28,7 +28,7 @@
 				<div class="container">
 					<a class="navbar-brand me-5" href="/">
 						<img
-							src="images/logo/archivee.png"
+							src="/images/logo/archivee.png"
 							alt="archive logo"
 							class="logo"
 						/>
@@ -86,7 +86,7 @@
 						<h1 class="hero__header">
 							Advertise Your <br />
 							Next Event On<br /><span class="hero__archive"
-								><img src="./IMAGES/LOGO/archive white.png" alt="logo"
+								><img src="/images/logo/archive white.png" alt="logo"
 							/></span>
 							for free
 						</h1>
@@ -117,7 +117,7 @@
 					<div class="tags">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link me-3 navbar__tags" href="/events"> All </a>
+								<a class="nav-link me-3 navbar__tags" href="/"> All </a>
 							</li>
 							<li class="nav-item">
 								<a
@@ -163,6 +163,7 @@
 		<!-- Events Section -->
 		<section id="events__section">
 			<div class="container">
+				<%= message %>
 				<div class="row">
 					<!-- card 1 -->
 					<% events.forEach((event) => { %>
@@ -208,3 +209,4 @@
 
 		<!-- End of Events Section -->
 		<%- include('partials/footer') %>
+
