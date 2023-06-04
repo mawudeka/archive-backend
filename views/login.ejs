@@ -28,12 +28,18 @@
 		<div class="login-section">
 			<form action="/auth/google" method="get">
 				<div class="d-grid">
-					<button id="submit" type="submit" class="btn btn-light btn-lg text-nowrap">
-                        <i class="fa-brands fa-square-google-plus" style="color: #dc5d18;"></i> Login With Google
-                    </button>
+					<button
+						id="submit"
+						type="submit"
+						class="btn btn-danger btn-lg text-nowrap"
+					>
+						<span>
+							<img width="20" height="20" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo"/>
+						</span>
+						Login With Google
+					</button>
 				</div>
 			</form>
 		</div>
 
 		<%- include('partials/footer') %>
-
