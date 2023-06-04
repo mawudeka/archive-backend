@@ -1,5 +1,19 @@
 const router = require('express').Router();
 const schema = require('../models/schema');
+const multer = require('multer');
+const path = require('path');
+
+//multer set up
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, `public/images/eventimages/`);
+	},
+	filename: (req, file, cb) => {
+		cb(null, Date.now() + '-' + path.extname(file.originalname));
+	},
+});
+
+const upload = multer({ storage: storage });
 
 const Event = schema.event;
 
@@ -21,10 +35,11 @@ router.get('/create', authenticateUser, (req, res) => {
 	res.render('create', { user: req.user.firstName });
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', upload.single('image'), async (req, res) => {
 	const tags = req.body.tags.split(', ');
 	const newEvent = await new Event({
 		organizer: req.user.id,
+		image: req.file.filename,
 		title: req.body.title,
 		description: req.body.description,
 		location: req.body.location,
@@ -34,8 +49,7 @@ router.post('/create', async (req, res) => {
 		price: req.body.price,
 		tags: tags,
 	}).save();
-
-	res.redirect('/');
+	res.redirect('/profile');
 });
 
 // user viewing all their events

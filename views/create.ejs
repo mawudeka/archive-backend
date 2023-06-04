@@ -31,7 +31,8 @@
 					<h4 class="form__header mb-4">
 						Hello <%= user %>, please fill this form to create your event
 					</h4>
-					<form action="/create" method="post">
+					<form action="/create" method="post" enctype="multipart/form-data">
+						<input class="form-control mb-4" type="file" name="image" />
 						<input
 							class="form-control mb-4"
 							type="text"

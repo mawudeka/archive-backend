@@ -102,7 +102,9 @@ a {
 .event__card {
 	margin-bottom: 32px;
 }
-
+.event__image {
+	max-height: 40%;
+}
 .card {
 	height: 500px;
 }
