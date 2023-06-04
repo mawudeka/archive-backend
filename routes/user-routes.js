@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const multer = require('multer');
-const path = require('path');
 const schema = require('../models/schema');
-const multer = require('multer');
 const path = require('path');
 
 //multer set up
@@ -16,20 +14,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
-
-const connection = mongoose.createConnection(
-	process.env.DATABASE_CONNECTION_STRING
-);
-//Initialize gfs
-let gfs;
-
-connection.once('open', () => {
-	gfs = Grid(connection.db, mongoose.mongo);
-	gfs.collection('eventsimages');
-});
-
-
 
 // event schema
 const Event = schema.event;
@@ -68,12 +52,10 @@ router.get('/profile', authenticateUser, async (req, res) => {
 
 // only authenticated users can create new event
 router.get('/create', authenticateUser, (req, res) => {
-	res.render('create', { user: req.user.firstName });
+	res.render('create', { user: req.user.firstName, title: 'Create Event'});
 });
 
 router.post('/create', upload.single('file'), async (req, res) => {
-	const image = req.file.filename;
-
 	const tags = req.body.tags.split(', ');
 	await new Event({
 		organizer: req.user.id,
@@ -89,13 +71,5 @@ router.post('/create', upload.single('file'), async (req, res) => {
 	}).save();
 
 	res.redirect('/profile');
-});
-
-// Display event image
-router.get('/event/:eventimage', async (req, res) => {
-	const images = await gfs.files.find({});
-	res.send(images);
-	// const readstream = gfs.createReadStream(image.filename);
-	// readstream.pipe(res);
 });
 module.exports = router;
