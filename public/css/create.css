@@ -1,7 +1,7 @@
-.logo {
+/* .logo {
 	display: block;
 	margin: 10px auto;
-}
+} */
 
 .login-section__background,
 .event-section__background {
@@ -38,7 +38,7 @@
 	height: 300px;
 	width: 300px;
 	top: 50%;
-	border: none !important;
+	/* border: none !important; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -57,7 +57,9 @@
 }
 
 @media screen and (max-width: 600px) {
+	.login-section,
 	.form__section {
 		width: 80%;
+		overflow: hidden !important;
 	}
 }
