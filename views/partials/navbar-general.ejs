@@ -1,0 +1,54 @@
+		<!-- Navbar Section -->
+		<section id="navbar__section">
+			<nav class="navbar navbar-expand-lg">
+				<div class="container">
+					<a class="navbar-brand me-5" href="/">
+						<img
+							src="/images/logo/archivee.png"
+							alt="archive logo"
+							class="logo"
+						/>
+					</a>
+					<form class="d-flex navbar__form" role="search">
+						<div class="input-group">
+							<div class="input-group-text">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</div>
+							<input
+								class="form-control navbar__form-control"
+								type="search"
+								placeholder="search event"
+								aria-label="Search"
+								name="search"
+							/>
+						</div>
+					</form>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbar"
+						aria-controls="navbar"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="navbar-collapse collapse" id="navbar">
+						<ul class="navbar-nav ms-auto">
+							<li class="nav-item">
+								<a class="nav-link navbar__link navbar__create" href="/create">
+									Create event</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link navbar__link" href="/login"> Log In</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link navbar__link" href="/signup"> Sign Up</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</section>

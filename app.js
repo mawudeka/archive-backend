@@ -59,8 +59,7 @@ app.get('/event/:eventID', async (req, res) => {
 	const eventID = req.params.eventID;
 	const event = await Event.findById(eventID);
 
-	// create event.ejs to render this later
-	res.send(event);
+	res.render('events', { event: event, title: event.name });
 });
 
 app.get('/login', (req, res) => {

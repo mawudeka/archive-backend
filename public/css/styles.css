@@ -24,7 +24,6 @@ ul,
 a {
 	list-style-type: none;
 	text-decoration: none;
-	color: #fff;
 }
 
 /* navbar */
@@ -133,6 +132,10 @@ a {
 /* Footer */
 #footer__section {
 	background-color: #000000;
+	color: #fff;
+}
+
+#footer__section .social_link a {
 	color: #fff;
 }
 

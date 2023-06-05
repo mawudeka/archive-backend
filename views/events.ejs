@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<%- include('partials/navbar-general') %>
+<!-- Events Section -->
+<section id="events__section">
+	<div class="container">
+		<div class="event__detail">
+			<div class="event__img">
+				<img
+					src="/images/eventimages/<%= event.image %>"
+					alt="<%= event.name  %> main image"
+					class="event__main-img"
+					width="100%"
+					height="500px"
+				/>
+			</div>
+			<h3 class="mb-4"><%= event.title %></h3>
+			<ul class="event__metadata list-group list-group-horizontal-md">
+				<li
+					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
+				>
+					Location: <%= event.location %>
+				</li>
+				<li
+					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
+				>
+					Time: <%= event.time %>
+				</li>
+				<li
+					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
+				>
+					Date: <%= event.date.toDateString() %>
+				</li>
+				<li
+					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
+				>
+					Price: <%= event.price %>
+				</li>
+				<li
+					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
+				>
+					Type: <%= event.type %>
+				</li>
+			</ul>
+
+			<p class="description"><%= event.description %></p>
+
+			<h4 class="tags__head mt-5">Tags</h4>
+			<ul class="event__tags list-group list-group-horizontal-md">
+				<% event.tags.forEach( (tag) => { %>
+
+				<li
+					class="event__tag-single list-group-item-info list-group-item me-5 mb-4"
+				>
+					<%= tag %>
+				</li>
+				<% }) %>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<%- include('partials/footer') %>
