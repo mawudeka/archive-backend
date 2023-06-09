@@ -28,37 +28,37 @@ function authenticateUser(req, res, next) {
 }
 
 //User profile
-router.get('/profile', authenticateUser, async (req, res) => {
-	const currentUser = req.user;
-	const events = await Event.find({ organizer: currentUser.id });
-	if (events.length > 0) {
-		const message = 'Your Events ';
-		res.render('profile', {
-			message: message,
-			title: 'Profile',
-			events: events,
-			user: currentUser,
-		});
-	} else {
-		const message = '';
-		res.render('profile', {
-			message: message,
-			title: 'Profile',
-			events: events,
-			user: currentUser,
-		});
-	}
+router.get('/profile', async (req, res) => {
+	res.redirect('/');
+	// const currentUser = req.user;
+	// const events = await Event.find({ organizer: currentUser.id });
+	// if (events.length > 0) {
+	// 	const message = 'Your Events ';
+	// 	res.render('profile', {
+	// 		message: message,
+	// 		title: 'Profile',
+	// 		events: events,
+	// 		user: currentUser,
+	// 	});
+	// } else {
+	// 	const message = '';
+	// 	res.render('profile', {
+	// 		message: message,
+	// 		title: 'Profile',
+	// 		events: events,
+	// 		user: currentUser,
+	// 	});
+	// }
 });
 
 // only authenticated users can create new event
-router.get('/create', authenticateUser, (req, res) => {
-	res.render('create', { user: req.user.firstName, title: 'Create Event'});
+router.get('/create', (req, res) => {
+	res.render('create', { title: 'Create Event' });
 });
 
 router.post('/create', upload.single('file'), async (req, res) => {
 	const tags = req.body.tags.split(', ');
 	await new Event({
-		organizer: req.user.id,
 		image: req.file.filename,
 		title: req.body.title,
 		description: req.body.description,

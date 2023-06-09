@@ -1,7 +1,7 @@
-/* .logo {
+.logo {
 	display: block;
 	margin: 10px auto;
-} */
+}
 
 .login-section__background,
 .event-section__background {
@@ -25,10 +25,11 @@
 	border: 1px solid #000;
 	border-radius: 13px;
 	width: 700px;
+	height: 900px;
 	margin-inline: auto;
 	padding: 50px;
 	position: absolute;
-	top: 90%;
+	top: 70%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2;
