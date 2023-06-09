@@ -40,20 +40,6 @@ app.get('/', async (req, res) => {
 	res.render('index', { events: events, message: message });
 });
 
-app.get('/event/:eventID', async (req, res) => {
-	const eventID = req.params.eventID;
-	const event = await Event.findById(eventID);
-
-	res.render('events', { event: event, title: event.name });
-});
-
-app.get('/login', (req, res) => {
-	res.render('login');
-});
-
-app.get('/signup', (req, res) => {
-	res.redirect('/login');
-});
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log('Server started on port 3000');

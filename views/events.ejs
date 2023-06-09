@@ -1,6 +1,7 @@
+<%- include('partials/navbar-general') %>
+
 <%- include('partials/header') %>
 
-<%- include('partials/navbar-general') %>
 <!-- Events Section -->
 <section id="events__section">
 	<div class="container">
@@ -15,6 +16,13 @@
 				/>
 			</div>
 			<h3 class="mb-4"><%= event.title %></h3>
+			<a
+				type="button"
+				href="/<%=event.id%>/register"
+				class="btn btn-primary text-nowrap mb-3"
+			>
+				Rgister</a
+			>
 			<ul class="event__metadata list-group list-group-horizontal-md">
 				<li
 					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
@@ -36,6 +44,7 @@
 				>
 					Price: <%= event.price %>
 				</li>
+
 				<li
 					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
 				>

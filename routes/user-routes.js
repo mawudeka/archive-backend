@@ -27,6 +27,16 @@ const Event = schema.event;
 // 	}
 // }
 
+//Login
+router.get('/login', (req, res) => {
+	res.render('login');
+});
+
+// Signup
+router.get('/signup', (req, res) => {
+	res.redirect('/login');
+});
+
 //User profile
 router.get('/profile', async (req, res) => {
 	res.redirect('/');
@@ -71,6 +81,14 @@ router.post('/create', upload.single('file'), async (req, res) => {
 	}).save();
 
 	res.redirect('/profile');
+});
+
+// Event's details
+router.get('/event/:eventID', async (req, res) => {
+	const eventID = req.params.eventID;
+	const event = await Event.findById(eventID);
+
+	res.render('events', { event: event, title: event.name });
 });
 
 // register for event
