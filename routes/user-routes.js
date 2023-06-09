@@ -19,13 +19,13 @@ const upload = multer({ storage: storage });
 const Event = schema.event;
 
 //check if user is authenticated
-function authenticateUser(req, res, next) {
-	if (!req.user) {
-		res.redirect('/login');
-	} else {
-		next();
-	}
-}
+// function authenticateUser(req, res, next) {
+// 	if (!req.user) {
+// 		res.redirect('/login');
+// 	} else {
+// 		next();
+// 	}
+// }
 
 //User profile
 router.get('/profile', async (req, res) => {
@@ -71,5 +71,21 @@ router.post('/create', upload.single('file'), async (req, res) => {
 	}).save();
 
 	res.redirect('/profile');
+});
+
+// register for event
+router.get('/:event/register', async (req, res) => {
+	res.send('Render form for registration');
+});
+
+router.post('/:event/register', async (req, res) => {
+	const eventId = req.params.event;
+	try {
+		await Event.updateOne({ _id: eventId }, { $inc: { participants: 1 } });
+		const event = await Event.find({ _id: eventId });
+		res.json({ message: 'Registration successful', event });
+	} catch (error) {
+		res.send(error);
+	}
 });
 module.exports = router;

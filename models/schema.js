@@ -43,6 +43,12 @@ const eventSchema = new mongoose.Schema({
 		required: true,
 		default: 0,
 	},
+
+	participants: {
+		type: Number,
+		default: 0,
+	},
+
 	tags: Array,
 });
 
