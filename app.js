@@ -40,7 +40,6 @@ app.get('/', async (req, res) => {
 	res.render('index', { events: events, message: message });
 });
 
-
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3000 || `0.0.0.0:${PORT}`, () => {
 	console.log('Server started on port 3000');
 });
