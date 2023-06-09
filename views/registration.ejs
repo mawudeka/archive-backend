@@ -19,6 +19,16 @@
 			<p>Bank Branch: <%= event.account.branch %></p>
 		</div>
 	</div>
-	<a href="/confirm" type="button" class="btn btn-primary mb-5" href>Confirm</a>
+	<a type="button" class="btn btn-primary mb-5 confirm-btn">Confirm</a>
+
+	<div class="modal-div hidden">
+		<h2>Registration Confirmed</h2>
+		<form action="/<%= event.id %>/register" method="post">
+			<button type="submit" class="btn btn-primary btn-lg modal-btn mt-3 ms-auto">
+				Close
+			</button>
+		</form>
+	</div>
+	<div class="overlay hidden"></div>
 </div>
 <%- include('partials/footer') %>

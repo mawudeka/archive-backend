@@ -101,8 +101,13 @@ router.get('/event/:eventID', async (req, res) => {
 router.get('/:event/register', async (req, res) => {
 	const eventId = req.params.event;
 	const event = await Event.findOne({ _id: eventId });
-	console.log(event);
 	res.render('registration', { event: event, title: 'Register for event' });
+});
+
+// confirm registration
+
+router.get('/confirm', async (req, res) => {
+	res.send('confirm');
 });
 
 router.post('/:event/register', async (req, res) => {
