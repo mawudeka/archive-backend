@@ -50,6 +50,24 @@ const eventSchema = new mongoose.Schema({
 	},
 
 	tags: Array,
+	account: {
+		name: {
+			type: String,
+			default: null,
+		},
+		number: {
+			type: String,
+			default: null,
+		},
+		bank: {
+			type: String,
+			default: null,
+		},
+		branch: {
+			type: String,
+			default: null,
+		},
+	},
 });
 
 const event = mongoose.model('Event', eventSchema);

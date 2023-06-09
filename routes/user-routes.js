@@ -78,6 +78,12 @@ router.post('/create', upload.single('file'), async (req, res) => {
 		type: req.body.type,
 		price: req.body.price,
 		tags: tags,
+		account: {
+			name: req.body.account_name,
+			number: req.body.account_number,
+			bank: req.body.account_bank,
+			brank: req.body.account_branch,
+		},
 	}).save();
 
 	res.redirect('/profile');
@@ -93,7 +99,10 @@ router.get('/event/:eventID', async (req, res) => {
 
 // register for event
 router.get('/:event/register', async (req, res) => {
-	res.send('Render form for registration');
+	const eventId = req.params.event;
+	const event = await Event.findOne({ _id: eventId });
+	console.log(event);
+	res.render('registration', { event: event, title: 'Register for event' });
 });
 
 router.post('/:event/register', async (req, res) => {

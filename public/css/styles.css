@@ -112,7 +112,7 @@ a {
 }
 .event__title {
 	text-transform: capitalize;
-	font-size: 22px;
+	font-size: 20px;
 	font-weight: 700;
 }
 
@@ -121,7 +121,7 @@ a {
 .event__metadata .location,
 .event__price,
 .event__metadata .type {
-	font-size: 14px;
+	font-size: 12px;
 	color: #40128b;
 	font-weight: 700;
 }

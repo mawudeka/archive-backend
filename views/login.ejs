@@ -22,24 +22,50 @@
 		<link rel="stylesheet" href="/css/create.css" />
 	</head>
 	<body>
-		<img src="/images/logo/archivee.png" alt="logo" class="logo" />
-		<div class="login-section__background"></div>
+		<%- include('partials/navbar-general') %>
+		<section id="login__event-section">
+			<div class="container container-login">
+				<div class="login-section">
+					<form action="/login" method="post">
+						<h3 class="text-center fs-4 mb-4">Login into your account</h3>
+						<input
+							class="form-control mb-4"
+							type="text"
+							name="name"
+							placeholder="John Doe"
+						/>
 
-		<div class="login-section">
-			<form action="/auth/google" method="get">
-				<div class="d-grid">
-					<button
-						id="submit"
-						type="submit"
-						class="btn btn-danger btn-lg text-nowrap"
-					>
-						<span>
-							<img width="20" height="20" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo"/>
-						</span>
-						Login With Google
-					</button>
+						<input
+							class="form-control mb-4"
+							type="text"
+							name="username"
+							placeholder="@johndoe"
+						/>
+						<input
+							class="form-control mb-4"
+							type="email"
+							name="email"
+							placeholder="johndoe@example.com"
+						/>
+
+						<div class="d-grid gap-2">
+							<button type="submit" class="btn btn-primary submit-btn">
+								Login
+							</button>
+						</div>
+						<hr />
+						<div class="d-grid gap-2">
+							<button type="submit" class="btn btn-danger submit-btn">
+								Login With Google
+							</button>
+							<button type="submit" class="btn btn-dark submit-btn">
+								Login With Github
+							</button>
+						</div>
+					</form>
 				</div>
-			</form>
-		</div>
+			</div>
+		</section>
 
 		<%- include('partials/footer') %>
+

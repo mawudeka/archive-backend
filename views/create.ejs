@@ -23,10 +23,10 @@
 		<link rel="stylesheet" href="/css/create.css" />
 	</head>
 	<body>
+		<%- include('partials/navbar-general') %>
+
 		<section id="create__event-section">
-			<img src="/images/logo/archivee.png" alt="logo" class="logo" />
-			<div class="event-section__background"></div>
-			<div class="container">
+			<div class="container container-create">
 				<div class="form__section">
 					<form action="/create" method="post" enctype="multipart/form-data">
 						<input
@@ -71,9 +71,34 @@
 						<input
 							class="form-control mb-4"
 							type="text"
+							name="account_name"
+							placeholder="Name on account for payment"
+						/>
+						<input
+							class="form-control mb-4"
+							type="text"
+							name="account_number"
+							placeholder="Account number"
+						/>
+						<input
+							class="form-control mb-4"
+							type="text"
+							name="account_bank"
+							placeholder="Bank Name/Momo Network Operator"
+						/>
+						<input
+							class="form-control mb-4"
+							type="text"
+							name="account_branch"
+							placeholder="Bank branch name"
+						/>
+						<input
+							class="form-control mb-4"
+							type="text"
 							name="tags"
 							placeholder="tags: comma-separated list of event categories. please leave space after the comma"
 						/>
+
 						<div class="d-grip">
 							<button type="submit" class="btn btn-primary btn-lg submit-btn">
 								Create
@@ -85,5 +110,4 @@
 			</div>
 		</section>
 		<%- include('partials/footer') %>
-	</body>
-</html>
+

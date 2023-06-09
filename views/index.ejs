@@ -179,7 +179,7 @@
 									<%= event.title %>
 								</a>
 								<p class="card-subtitle event__description">
-									<%= `${event.description.slice(0, 49)}......` %>
+									<%= `${event.description.slice(0, 39)}......` %>
 								</p>
 								<p class="card-text event__metadata">
 									<span class="location"> <%= event.location %> </span> <br />
@@ -209,4 +209,5 @@
 
 		<!-- End of Events Section -->
 		<%- include('partials/footer') %>
-	
+	</body>
+</html>
