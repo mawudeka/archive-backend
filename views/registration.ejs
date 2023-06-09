@@ -1,0 +1,34 @@
+<%- include('partials/navbar-general') %> <%- include('partials/header') %>
+
+<div class="container">
+	<div class="row">
+		<img
+			src="/images/eventimages/<%= event.image %>"
+			alt=""
+			width="100%"
+			height="500px"
+		/>
+		<h2 class="fs-2 fw-bold lh-base mb-2"><%= event.title %></h2>
+		<div class="col-lg-6 mt-5">
+			<h4 class="fs-5 fw-normal lh-base text-primary-emphasis my-2">
+				Make payment to the account details below and click confirm.
+			</h4>
+			<p>Account Name: <%= event.account.name %></p>
+			<p>Account Number: <%= event.account.number %></p>
+			<p>Bank Name: <%= event.account.bank %></p>
+			<p>Bank Branch: <%= event.account.branch %></p>
+		</div>
+	</div>
+	<a type="button" class="btn btn-primary mb-5 confirm-btn">Confirm</a>
+
+	<div class="modal-div hidden">
+		<h2>Registration Confirmed</h2>
+		<form action="/<%= event.id %>/register" method="post">
+			<button type="submit" class="btn btn-primary btn-lg modal-btn mt-3 ms-auto">
+				Close
+			</button>
+		</form>
+	</div>
+	<div class="overlay hidden"></div>
+</div>
+<%- include('partials/footer') %>

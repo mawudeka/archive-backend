@@ -3,48 +3,31 @@
 	margin: 10px auto;
 }
 
-.login-section__background,
-.event-section__background {
-	background-image: url(/images/create-backgound.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	height: 1000px;
-	filter: blur(4px);
-	-webkit-filter: blur(4px);
-}
-
-.login-section__background {
-	background-image: url(/images/login-background.jpg);
-	height: 500px;
-}
-
-.login-section,
-.form__section {
-	background-color: #fff;
-	border: 1px solid #000;
-	border-radius: 13px;
-	width: 700px;
-	height: 900px;
-	margin-inline: auto;
+#create__event-section,
+#login__event-section {
+	background: rgb(0, 187, 185);
+	background: linear-gradient(
+		111deg,
+		rgba(0, 187, 185, 0.8799894957983193) 0%,
+		rgba(3, 228, 146, 0.804359243697479) 60%,
+		rgba(118, 164, 46, 1) 100%
+	);
 	padding: 50px;
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 2;
 }
 
+.form__section,
 .login-section {
-	height: 300px;
-	width: 300px;
-	top: 50%;
-	/* border: none !important; */
+	background-color: white;
+	padding: 50px;
+	border-radius: 6px;
+	width: 70%;
+}
+.container-login,
+.container-create {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-
 #submit {
 	font-size: 14px;
 }

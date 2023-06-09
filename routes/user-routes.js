@@ -27,6 +27,16 @@ const Event = schema.event;
 // 	}
 // }
 
+//Login
+router.get('/login', (req, res) => {
+	res.render('login');
+});
+
+// Signup
+router.get('/signup', (req, res) => {
+	res.redirect('/login');
+});
+
 //User profile
 router.get('/profile', async (req, res) => {
 	res.redirect('/');
@@ -68,14 +78,36 @@ router.post('/create', upload.single('file'), async (req, res) => {
 		type: req.body.type,
 		price: req.body.price,
 		tags: tags,
+		account: {
+			name: req.body.account_name,
+			number: req.body.account_number,
+			bank: req.body.account_bank,
+			brank: req.body.account_branch,
+		},
 	}).save();
 
 	res.redirect('/profile');
 });
 
+// Event's details
+router.get('/event/:eventID', async (req, res) => {
+	const eventID = req.params.eventID;
+	const event = await Event.findById(eventID);
+
+	res.render('events', { event: event, title: event.name });
+});
+
 // register for event
 router.get('/:event/register', async (req, res) => {
-	res.send('Render form for registration');
+	const eventId = req.params.event;
+	const event = await Event.findOne({ _id: eventId });
+	res.render('registration', { event: event, title: 'Register for event' });
+});
+
+// confirm registration
+
+router.get('/confirm', async (req, res) => {
+	res.send('confirm');
 });
 
 router.post('/:event/register', async (req, res) => {
