@@ -115,7 +115,7 @@ router.post('/:event/register', async (req, res) => {
 	try {
 		await Event.updateOne({ _id: eventId }, { $inc: { participants: 1 } });
 		const event = await Event.find({ _id: eventId });
-		res.json({ message: 'Registration successful', event });
+		res.redirect('/');
 	} catch (error) {
 		res.send(error);
 	}
