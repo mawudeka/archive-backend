@@ -82,7 +82,7 @@ router.post('/create', upload.single('file'), async (req, res) => {
 			name: req.body.account_name,
 			number: req.body.account_number,
 			bank: req.body.account_bank,
-			brank: req.body.account_branch,
+			branch: req.body.account_branch,
 		},
 	}).save();
 
