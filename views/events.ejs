@@ -13,33 +13,23 @@
 					height="500px"
 				/>
 			</div>
-			<h3 class="mb-4"><%= event.title %></h3>
+			<h3 class="mb-2"><%= event.title %></h3>
 
 			<ul class="event__metadata list-group list-group-horizontal-md">
-				<li
-					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
-				>
+				<li class="event__metadata-single list-group-item-info list-group-item">
 					Location: <%= event.location %>
 				</li>
-				<li
-					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
-				>
+				<li class="event__metadata-single list-group-item-info list-group-item">
 					Time: <%= event.time %>
 				</li>
-				<li
-					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
-				>
+				<li class="event__metadata-single list-group-item-info list-group-item">
 					Date: <%= event.date.toDateString() %>
 				</li>
-				<li
-					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
-				>
+				<li class="event__metadata-single list-group-item-info list-group-item">
 					Price: <%= event.price %>
 				</li>
 
-				<li
-					class="event__metadata-single list-group-item-info list-group-item me-5 mb-4"
-				>
+				<li class="event__metadata-single list-group-item-info list-group-item">
 					Type: <%= event.type %>
 				</li>
 			</ul>
@@ -47,7 +37,7 @@
 			<a
 				type="button"
 				href="/<%=event.id%>/register"
-				class="btn btn-primary text-nowrap mb-4"
+				class="btn btn-primary text-nowrap my-4"
 			>
 				Rgister</a
 			>
