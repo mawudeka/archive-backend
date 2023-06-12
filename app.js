@@ -45,15 +45,7 @@ app.get('/', async (req, res) => {
 	} else {
 		const query = req.query.search;
 		console.log(query);
-		const events = await Event.find(
-			{
-				$regexMatch: {
-					input: '$description',
-					regex: '/' + query + '/',
-					options: 'i',
-				},
-			},
-		);
+		const events = await Event.find({});
 		events.sort((a, b) => {
 			return new Date(b.date) - new Date(a.date);
 		});
