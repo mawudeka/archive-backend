@@ -40,11 +40,19 @@
 	margin-right: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
+	.container {
+		width: 100%;
+	}
 	.login-section,
 	.form__section {
-		width: 80%;
-		padding: 0;
+		width: 90%;
+		padding: 10px;
 		overflow: hidden !important;
 	}
+	#create__event-section,
+	#login__event-section {
+		padding: 5px;
+	}
 }
+
