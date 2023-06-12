@@ -29,15 +29,31 @@ app.use('/category', categoryRoutes);
 
 // get events
 app.get('/', async (req, res) => {
-	const events = await Event.find({});
+	if (JSON.stringify(req.query) === '{}') {
+		try {
+			const events = await Event.find({});
+			events.sort((a, b) => {
+				return new Date(b.date) - new Date(a.date);
+			});
 
-	events.sort((a, b) => {
-		return new Date(b.date) - new Date(a.date);
-	});
+			const message = '';
 
-	const message = '';
+			res.render('index', { events: events, message: message });
+		} catch (error) {
+			res.json({ messge: error.message });
+		}
+	} else {
+		const query = req.query.search;
+		console.log(query);
+		const events = await Event.find({});
+		events.sort((a, b) => {
+			return new Date(b.date) - new Date(a.date);
+		});
 
-	res.render('index', { events: events, message: message });
+		const message = '';
+
+		res.render('index', { events: events, message: message });
+	}
 });
 
 app.listen(process.env.PORT || 3000 || `0.0.0.0:${PORT}`, () => {
